@@ -13,7 +13,9 @@ const PORT=process.env.PORT ||5001
 const app=new Hono();
 
 app.use("/api/*",cors({
-  origin:"http://localhost:3000",
+  origin:["http://localhost:3000",
+     "https://note-sharing-frontend.onrender.com",
+  ],
   credentials:true,
 }))
 
