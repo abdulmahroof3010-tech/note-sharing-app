@@ -28,8 +28,16 @@ export const sharePublicNoteController=async(c)=>{
 }
 
     if(note.shareType ==='one-time'){
+        console.log("BEFORE ATOMIC UPDATE", {
+    shareToken,
+    used: note.used,
+    revoked: note.revoked,
+});
+
         const consumesNote=await noteModel.findOneAndUpdate(
             {shareToken,used:false,revoked:false},{$set:{used:true,},$inc:{viewCount:1}},{ returnDocument: "after" ,})
+
+            console.log("ATOMIC RESULT", consumesNote);
          
             if(!consumesNote){
                 return c.json({message:"Share link has already been used"},410)
