@@ -31,7 +31,7 @@ export default function NewNotePage() {
         shareType: form.shareType,
         accessType: form.accessType,
         ...(form.shareType === "time-based"
-          ? { expiresAt: form.expiresAt }
+          ? { expiresAt: new Date(form.expiresAt).toISOString()}
           : {}),
       });
 
