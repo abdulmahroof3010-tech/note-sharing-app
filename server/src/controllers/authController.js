@@ -54,8 +54,8 @@ export const loginController=async(c)=>{
       
         setCookie(c,"token",token,{
             httpOnly:true,
-            secure:false,
-            sameSite:'Lax',
+            secure:true,
+            sameSite:'none',
             path:'/',
         });
        return c.json({message:"login successfull",user:{name:isUser.name,email:isUser.email}},200)
