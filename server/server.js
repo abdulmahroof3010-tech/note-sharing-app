@@ -14,7 +14,7 @@ const app=new Hono();
 
 app.use("/api/*",cors({
   origin:["http://localhost:3000",
-     "note-sharing-app-imdu.vercel.app",
+     "https://note-sharing-app-imdu.vercel.app",
   ],
   credentials:true,
 }))
